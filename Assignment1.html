@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Session 1</title>
+	<script type="text/javascript">
+		function validate() {
+			// body...
+			if (document.myform.Name.value=="") {
+				alert(" Enter Name");
+				document.myform.Name.focus();
+				return false;
+			}
+			if (document.myform.Email.value=="") {
+				alert(" Enter Email");
+				document.myform.Email.focus();
+				return false;
+			}
+			var Emailid= document.myform.Email.value;
+			at= Emailid.indexOf("@");
+			dot= Emailid.lastIndexOf(".");
+			if (at<1 || (dot-at<2)) {
+				alert("Please enter valid Email Id");
+				document.myform.Email.focus();
+				return false;
+			}
+			var len=document.myform.Mobile.value;
+			if (len.length!=10) {
+				alert("Enter valid Number");
+				document.myform.Mobile.focus();
+				return false;
+			}
+
+			var age= document.myform.Age.value;
+			if (age=="") {
+				alert('Enter Age');
+				document.myform.Age.focus();
+				return false;
+			}
+
+			if (age>17 && document.myform.Voter.value=="") {
+					alert("Enter Voter Id")
+					document.myform.Voter.focus();
+					return false;
+				}
+			
+			else if(age<18 && document.myform.Voter.value!=""){
+				if(confirm("Are you adult")){
+					document.myform.Age.focus();
+					return false;
+				}
+				else{
+					alert('Go Home kid');
+				}
+
+			}
+			}
+		var counter = 1;
+	var limit = 3;
+	function addInput(divName){
+    	 if (counter == limit)  {
+      	    alert("You have reached the limit of adding " + counter + " inputs");
+    	 }
+    	 else {
+	          var newdiv = document.createElement('div');
+	          newdiv.innerHTML = "Name: <input type='text' name='Name'><br>" + "Email: <input type='text' name='Emailid' required>";
+	          document.getElementById(divName).appendChild(newdiv);
+	          counter++;
+    	 }
+	}
+	</script>
+
+	<style type="text/css">
+		.input {
+			background-color: #e9e9e9;
+			margin: 10px;
+			border: 1px solid black;
+			border-radius: 5px;
+			text-align: center;
+			width: 30%;
+		}
+		input{
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #f1f1f1;
+		}
+		.submit {
+			text-align: Center;
+			font-size: 24px;
+			
+		}
+	</style>
+</head>
+<body>
+	<form name="myform" onsubmit="return(validate());" method="get">
+		<div class="input">Name:<input type="text" name="Name"></div>
+		<div class="input">Email:<input type="text" name="Email"></div>	
+		<div class="input">Mobile No:<input type="text" name="Mobile"></div>
+		<div class="input"><fieldset>
+					<legend>Contact Details:</legend>
+						 <div id="dynamicInput">
+		          Name: <input type="text" name="Nam" required><br>
+		          Email: <input type="email" name="Eml" required>
+		    </div>
+		   <input type="button" value="Add Contact" onClick="addInput('dynamicInput');">
+		     		</fieldset></div>
+     	<div class="input`">Country:<input list="Country" name="Country"></div>
+     		<datalist id="Country">
+     			<option value="India"></option>
+     			<option value="America"></option>
+     			<option value="Australia"></option>
+     			<option value="Cannada"></option>
+     			<option value="Russia"></option>
+     			<option value="Indonesia"></option>
+     		</datalist>
+		<div class="input">Age:<input type="number" name="Age"></div>
+		<div class="input">Voter Id:<input type="text" name="Voter"></div>
+		<button type="submit" value="submit" class="submit">Submit</button>
+	</form>
+
+</body>
+</html>
