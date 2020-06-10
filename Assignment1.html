@@ -56,7 +56,7 @@
 			}
 			}
 		var counter = 1;
-	var limit = 3;
+	var limit = 5;
 	function addInput(divName){
     	 if (counter == limit)  {
       	    alert("You have reached the limit of adding " + counter + " inputs");
@@ -69,6 +69,44 @@
     	 }
 	}
 
+    var tags = [  
+    'India',
+    'Austrailia',
+    'America',
+    'Japan',
+    'Russia',
+    'Pakistan',
+    'China',
+    'Nepal',
+    'Afganistan',
+    'Newzeland',
+    'England'
+      ]; 
+  
+      /*list of available options*/ 
+     var n= tags.length; //length of datalist tags     
+  
+     function ac(value) { 
+        document.getElementById('datalist').innerHTML = ''; 
+         //setting datalist empty at the start of function 
+         //if we skip this step, same name will be repeated 
+           
+         l=value.length; 
+         //input query length 
+     for (var i = 0; i<n; i++) { 
+         if(((tags[i].toLowerCase()).indexOf(value.toLowerCase()))>-1) 
+         { 
+             //comparing if input string is existing in tags[i] string 
+  
+             var node = document.createElement("option"); 
+             var val = document.createTextNode(tags[i]); 
+              node.appendChild(val); 
+  
+               document.getElementById("datalist").appendChild(node); 
+                   //creating and appending new elements in data list 
+             } 
+         } 
+     } 
 
 	</script>
 
@@ -120,15 +158,13 @@
 		   <div class="Button"><input type="button" value="Add Contact" onClick="addInput('dynamicInput');"></div>
 		     		</fieldset></div>
      	<div class="label1">Country:</div>
-     	<div class="input1"><input list="Country" name="Country"></div>
-     		<datalist id="Country">
-     			<option value="India"></option>
-     			<option value="America"></option>
-     			<option value="Australia"></option>
-     			<option value="Cannada"></option>
-     			<option value="Russia"></option>
-     			<option value="Indonesia"></option>
-     		</datalist>
+     	<div class="input1"><input type="text" list="datalist" onkeyup="ac(this.value)"> </div>
+<!-- On keyup calls the function everytime a key is released -->
+<datalist id="datalist"> 
+  
+
+<!-- This data list will be edited through javascript     -->
+</datalist> 
 		<div class="label1">Age:</div><div class="input1"><input type="number" name="Age"></div>
 		<div class="label1">Voter Id:</div> <div class="input1"><input type="text" name="Voter"></div>
 		<div class="Button"><button type="submit" value="submit" class="submit">Submit</button></div>
