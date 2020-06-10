@@ -48,7 +48,7 @@ body {font-family: Arial;}
 
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Tab1')">Tab1</button>
+  <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">Tab1</button>
   <button class="tablinks" onclick="openTab(event, 'Tab2')">Tab2</button>
   <button class="tablinks" onclick="openTab(event, 'Tab3')">Tab3</button>
 </div>
@@ -71,6 +71,8 @@ body {font-family: Arial;}
 <script>
 function openTab(evt, tab) {
   var i, tabcontent, tablinks;
+
+
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
@@ -82,6 +84,7 @@ function openTab(evt, tab) {
   document.getElementById(tab).style.display = "block";
   evt.currentTarget.className += " active";
 }
+document.getElementById("defaultOpen").click();
 </script>
    
 </body>
