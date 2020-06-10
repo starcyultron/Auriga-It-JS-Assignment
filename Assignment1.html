@@ -49,6 +49,7 @@
 					return false;
 				}
 				else{
+					document.myform.Voter.value="";
 					alert('Go Home kid');
 				}
 
@@ -62,48 +63,64 @@
     	 }
     	 else {
 	          var newdiv = document.createElement('div');
-	          newdiv.innerHTML = "Name: <input type='text' name='Name'><br>" + "Email: <input type='text' name='Emailid' required>";
+	          newdiv.innerHTML = " <div class='label1'> Name: </div> <input type='text' name='Nam' required><br>" + " <div class='label1'> Email: </div> <input type='email' name='Emailid' required>";
 	          document.getElementById(divName).appendChild(newdiv);
 	          counter++;
     	 }
 	}
+
+
 	</script>
 
 	<style type="text/css">
-		.input {
+		body{
+
+		}
+		.input1 {
 			background-color: #e9e9e9;
 			margin: 10px;
-			border: 1px solid black;
+			
 			border-radius: 5px;
-			text-align: center;
-			width: 30%;
+			
+			
+		}
+		.label1{
+			font-size: 24px;
 		}
 		input{
-			padding: 10px;
+			padding: 5px;
 			border-radius: 5px;
 			background-color: #f1f1f1;
+			width: 30%;
+
+		}
+		.Button{
+			margin: 10px;
 		}
 		.submit {
 			text-align: Center;
-			font-size: 24px;
-			
+			font-size: 24px;	
 		}
 	</style>
 </head>
 <body>
 	<form name="myform" onsubmit="return(validate());" method="get">
-		<div class="input">Name:<input type="text" name="Name"></div>
-		<div class="input">Email:<input type="text" name="Email"></div>	
-		<div class="input">Mobile No:<input type="text" name="Mobile"></div>
-		<div class="input"><fieldset>
+		<div class="label1">Name:</div>
+		<div class="input1"><input type="text" name="Name"></div>
+		<div class="label1">Email:</div>
+		<div class="input1"><input type="text" name="Email"></div>	
+		<div class="label1">Mobile No:</div>
+		<div class="input1"><input type="text" name="Mobile"></div>
+		<div class="field1"><fieldset>
 					<legend>Contact Details:</legend>
 						 <div id="dynamicInput">
-		          Name: <input type="text" name="Nam" required><br>
-		          Email: <input type="email" name="Eml" required>
+		          <div class="label1"> Name: </div> <input type="text" name="Nam" required><br>
+		          <div class="label1"> Email: </div> <input type="email" name="Emailid" required>
 		    </div>
-		   <input type="button" value="Add Contact" onClick="addInput('dynamicInput');">
+		   <div class="Button"><input type="button" value="Add Contact" onClick="addInput('dynamicInput');"></div>
 		     		</fieldset></div>
-     	<div class="input`">Country:<input list="Country" name="Country"></div>
+     	<div class="label1">Country:</div>
+     	<div class="input1"><input list="Country" name="Country"></div>
      		<datalist id="Country">
      			<option value="India"></option>
      			<option value="America"></option>
@@ -112,9 +129,9 @@
      			<option value="Russia"></option>
      			<option value="Indonesia"></option>
      		</datalist>
-		<div class="input">Age:<input type="number" name="Age"></div>
-		<div class="input">Voter Id:<input type="text" name="Voter"></div>
-		<button type="submit" value="submit" class="submit">Submit</button>
+		<div class="label1">Age:</div><div class="input1"><input type="number" name="Age"></div>
+		<div class="label1">Voter Id:</div> <div class="input1"><input type="text" name="Voter"></div>
+		<div class="Button"><button type="submit" value="submit" class="submit">Submit</button></div>
 	</form>
 
 </body>
