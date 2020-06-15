@@ -39,6 +39,7 @@
 		#demo{
 			font-size: 40px;
 			padding: 20px 40%;
+			text-align: center;
 		}
 	</style>
 
@@ -105,6 +106,8 @@
 			nItems = $('.paper > div').size();
 			$('.paper > div').hide();
 			$('#demo').show();
+			$(document.getElementById('prev')).hide();
+       		$(document.getElementById('next')).hide();	
 			var Answer=[];
 			let sum=0;
 			var i =0;
@@ -122,28 +125,29 @@
            	
            	if(sum<9){
            		document.getElementById("demo").style.color = "red";
-           		document.getElementById("demo").innerHTML = "FAIL";
+           		document.getElementById("demo").innerHTML = sum+"<br> FAIL";
            	}
            	if(sum > 8 && sum < 13){
            		document.getElementById("demo").style.color = "orange";
-           		document.getElementById("demo").innerHTML = "You are Average";
+           		document.getElementById("demo").innerHTML = sum+"<br>You are Average";
            	}
            	if(sum > 12 && sum < 18){
            		document.getElementById("demo").style.color = "green";
-           		document.getElementById("demo").innerHTML = "Good";
+           		document.getElementById("demo").innerHTML = sum+"<br>Good";
            	}
            	if(sum > 17 && sum < 23){
            		document.getElementById("demo").style.color = "dark-green";
-           		document.getElementById("demo").innerHTML = "Good";
+           		document.getElementById("demo").innerHTML = sum+"<br>Good";
            	}
            	if(sum > 22 && sum <= 25){
            		document.getElementById("demo").style.color = "#D4AF37";
-           		document.getElementById("demo").innerHTML = "Excellent";
+           		document.getElementById("demo").innerHTML = sum +"<br>Excellent";
            	}
            	
            i++;
 
        		}	
+       		
 			// body...
 		}
 
