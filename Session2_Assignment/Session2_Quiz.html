@@ -47,6 +47,7 @@
 		const correct = ["a","b","c","a","b","b","c","a","a","c","a","b","b","b","c","a","b","b","c","c","a","b","c","c","a"];
 		var nItems = 0;
 		var iCurrentSlide = 1;
+		var ls =1;
 		var iNextSlide = 2;
 		var Answer = [];
 		
@@ -54,9 +55,8 @@
 			$('.paper > div').hide();
 			$('.paper > #ques1').show();
 			 document.getElementById('prev').disabled=true;
-		
 
-
+			 
 		});
 		
 	
@@ -76,14 +76,24 @@
 		  if(iNewSlide == nItems)
 		  	document.getElementById('next').disabled=true;
 
-		  else if(iCurrentSlide <= 1)
+		  else if(iCurrentSlide <= 1){
 		    document.getElementById('prev').disabled=true;
-
+		}
 		  $('.paper > div').hide();
 		  $('.paper > #ques' + iNewSlide).show();
 
         // var e= document.querySelector('input[name=q'+iCurrentSlide+']:checked').value;
-           
+           var radios = document.getElementsByName("q"+iCurrentSlide);
+			  var val = localStorage.getItem('q'+iCurrentSlide);
+			  for(var i=0;i<radios.length;i++){
+			    if(radios[i].value == val){
+			      radios[i].checked = true;
+			    }
+			  }
+		  $('input[name=q'+iCurrentSlide+']').on('change', function(){
+		    localStorage.setItem('q'+iCurrentSlide, $(this).val());
+		  	alert(iCurrentSlide);
+		  });
 		  iCurrentSlide = iNewSlide;
 		  iNextSlide = iNewSlide + 1;
 		  Progress_bar(iCurrentSlide);
